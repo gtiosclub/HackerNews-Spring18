@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C9CA74E204F07D100D137ED /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9CA74D204F07D100D137ED /* Article.swift */; };
 		3CBD4671204EF01E00806BD6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBD4670204EF01E00806BD6 /* AppDelegate.swift */; };
 		3CBD4676204EF01E00806BD6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CBD4674204EF01E00806BD6 /* Main.storyboard */; };
 		3CBD4678204EF01E00806BD6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CBD4677204EF01E00806BD6 /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3C9CA74D204F07D100D137ED /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		3CBD466D204EF01E00806BD6 /* HackerNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackerNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CBD4670204EF01E00806BD6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3CBD4675204EF01E00806BD6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 			children = (
 				3CBD4670204EF01E00806BD6 /* AppDelegate.swift */,
 				3CBD4674204EF01E00806BD6 /* Main.storyboard */,
+				3C9CA74D204F07D100D137ED /* Article.swift */,
 				3CBD4684204EF5A300806BD6 /* HackerNewsTableViewCell.swift */,
 				3CBD4682204EF05E00806BD6 /* HNTableViewController.swift */,
 				3CBD4677204EF01E00806BD6 /* Assets.xcassets */,
@@ -139,6 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C9CA74E204F07D100D137ED /* Article.swift in Sources */,
 				3CBD4683204EF05E00806BD6 /* HNTableViewController.swift in Sources */,
 				3CBD4685204EF5A300806BD6 /* HackerNewsTableViewCell.swift in Sources */,
 				3CBD4671204EF01E00806BD6 /* AppDelegate.swift in Sources */,

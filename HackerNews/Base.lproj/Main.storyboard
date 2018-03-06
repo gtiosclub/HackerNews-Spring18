@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WUM-Hp-Z9q">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,7 +15,7 @@
             <objects>
                 <tableViewController id="egF-Do-tfC" customClass="HNTableViewController" customModule="HackerNews" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Yj6-gM-Kxu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="114"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Fpm-Dn-UJc" id="Z2A-WR-d2X">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="113.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="113.66666666666667"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My YC app: Dropbox - Throw away your USB drive" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCE-cP-znv">
@@ -48,7 +48,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="April 4, 2007" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lCj-0p-wWG">
                                             <rect key="frame" x="20" y="78" width="125" height="21"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="125" id="8Ao-Ek-0te"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="125" id="8Ao-Ek-0te"/>
                                                 <constraint firstAttribute="height" constant="21" id="igm-kD-5h2"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -56,10 +56,9 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MEA-oi-BBg">
-                                            <rect key="frame" x="185" y="74" width="166" height="30"/>
+                                            <rect key="frame" x="236" y="74" width="115" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="ae8-Xm-kne"/>
-                                                <constraint firstAttribute="width" constant="166" id="nEc-9w-e2l"/>
                                             </constraints>
                                             <state key="normal" title="Comments (135)"/>
                                             <connections>
@@ -69,10 +68,12 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="qeT-7H-Tf1" firstAttribute="leading" secondItem="Z2A-WR-d2X" secondAttribute="leadingMargin" id="5OT-Ag-gSU"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="lCj-0p-wWG" secondAttribute="trailingMargin" id="F3M-L3-Pbl"/>
                                         <constraint firstItem="lCj-0p-wWG" firstAttribute="top" secondItem="GCE-cP-znv" secondAttribute="bottom" constant="9" id="Ikr-XK-hbS"/>
                                         <constraint firstItem="qeT-7H-Tf1" firstAttribute="top" secondItem="Z2A-WR-d2X" secondAttribute="topMargin" constant="3" id="Oxu-DL-mIn"/>
                                         <constraint firstItem="GCE-cP-znv" firstAttribute="top" secondItem="Z2A-WR-d2X" secondAttribute="top" constant="7" id="SNQ-QI-1ze"/>
                                         <constraint firstAttribute="trailing" secondItem="GCE-cP-znv" secondAttribute="trailing" constant="8" id="Yq6-Gw-fKh"/>
+                                        <constraint firstItem="MEA-oi-BBg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Z2A-WR-d2X" secondAttribute="leading" constant="20" symbolic="YES" id="cn3-uQ-2qO"/>
                                         <constraint firstItem="GCE-cP-znv" firstAttribute="leading" secondItem="qeT-7H-Tf1" secondAttribute="trailing" constant="8" id="eCU-bw-691"/>
                                         <constraint firstAttribute="bottom" secondItem="MEA-oi-BBg" secondAttribute="bottom" constant="9.5" id="pmo-NY-S9A"/>
                                         <constraint firstItem="lCj-0p-wWG" firstAttribute="leading" secondItem="Z2A-WR-d2X" secondAttribute="leadingMargin" constant="4" id="vUe-rh-LZh"/>
@@ -92,7 +93,13 @@
                             <outlet property="delegate" destination="egF-Do-tfC" id="DgE-Te-hwa"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Hacker News" largeTitleDisplayMode="always" id="ZEM-fe-9Rb"/>
+                    <navigationItem key="navigationItem" title="Hacker News" largeTitleDisplayMode="always" id="ZEM-fe-9Rb">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="Iex-xQ-OSy">
+                            <connections>
+                                <action selector="manualRefresh:" destination="egF-Do-tfC" id="D1l-l1-ky5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jiC-BU-hct" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -104,7 +111,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WUM-Hp-Z9q" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="3Ps-PL-fmh">
-                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

@@ -19,40 +19,34 @@ class HNTableViewController: UITableViewController {
     }
     
     // MARK: - Fetching Data
+    @IBAction func manualRefresh(_ sender: Any) {
+        fetchTopArticles()
+    }
+    
     func fetchTopArticles() {
         guard let topArticleURL = URL(string: "https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty") else {
             return
         }
-        URLSession.shared.dataTask(with: topArticleURL, completionHandler: { (data, response, error) -> Void in
-            if error == nil && data != nil {
-                var text = String(data: data!, encoding: String.Encoding.utf8) as String!
-                text = text?.replacingOccurrences(of: "[", with: "").replacingOccurrences(of: "]", with: "").replacingOccurrences(of: " ", with: "")
-                var entries = text?.components(separatedBy: ",")
-                entries = Array(entries!.prefix(30))
-                for entryId in entries! {
-                    self.fetchArticleForEntry(entryId)
-                }
+        URLSession.shared.dataTask(with: topArticleURL) { (data, response, error) in
+            guard let data = data, let text = String(data: data, encoding: String.Encoding.utf8) else { return }
+            let trimemdText = text.trimmingCharacters(in: CharacterSet.init(charactersIn: "[]")).replacingOccurrences(of: " ", with: "")
+            var entries = trimemdText.components(separatedBy: ",")
+            entries = Array(entries.prefix(30))
+            for entryId in entries {
+                self.fetchArticleForEntry(entryId)
             }
-        }).resume()
+        }.resume()
     }
     
     func fetchArticleForEntry(_ entryId: String) {
-        guard let articleURL = URL(string: "https://hacker-news.firebaseio.com/v0/item/\(entryId).json?print=pretty") else {
-            return
-        }
-        URLSession.shared.dataTask(with: articleURL, completionHandler: { (data, response, error) -> Void in
-            if error == nil && data != nil {
-                do {
-                    let article = try JSONDecoder().decode(Article.self, from: data!)
-                    self.articles.append(article)
-                    DispatchQueue.main.async(execute: {() -> Void in
-                        self.tableView?.reloadData()
-                    })
-                } catch {
-                    print("Error info: \(error)")
-                }
+        guard let articleURL = URL(string: "https://hacker-news.firebaseio.com/v0/item/\(entryId).json?print=pretty") else { return }
+        URLSession.shared.dataTask(with: articleURL) { (data, response, error) in
+            guard let data = data, let article = try? JSONDecoder().decode(Article.self, from: data) else { return }
+            self.articles.append(article)
+            DispatchQueue.main.async {
+                self.tableView?.reloadData()
             }
-        }).resume()
+        }.resume()
     }
 
 
@@ -101,26 +95,3 @@ class HNTableViewController: UITableViewController {
         self.present(sfViewController, animated: true, completion: nil)
     }
 }
-
-struct Article: Codable
-{
-    var id: Int
-    var title: String
-    var url: String
-    var score: Int
-    var time: Double
-    var kids: [Int]
-}
-
-extension Double {
-    func getDateStringFromUTC() -> String {
-        let date = Date(timeIntervalSince1970: self)
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US")
-        dateFormatter.dateStyle = .medium
-        
-        return dateFormatter.string(from: date)
-    }
-}
-
