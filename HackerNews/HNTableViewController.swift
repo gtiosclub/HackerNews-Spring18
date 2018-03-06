@@ -20,6 +20,7 @@ class HNTableViewController: UITableViewController {
     
     // MARK: - Fetching Data
     @IBAction func manualRefresh(_ sender: Any) {
+        articles = []
         fetchTopArticles()
     }
     
@@ -30,8 +31,8 @@ class HNTableViewController: UITableViewController {
         URLSession.shared.dataTask(with: topArticleURL) { (data, response, error) in
             guard let data = data, let text = String(data: data, encoding: String.Encoding.utf8) else { return }
             let trimemdText = text.trimmingCharacters(in: CharacterSet.init(charactersIn: "[]")).replacingOccurrences(of: " ", with: "")
-            var entries = trimemdText.components(separatedBy: ",")
-            entries = Array(entries.prefix(30))
+            let entries = trimemdText.components(separatedBy: ",")
+//            entries = Array(entries.prefix(30))
             for entryId in entries {
                 self.fetchArticleForEntry(entryId)
             }
@@ -67,7 +68,7 @@ class HNTableViewController: UITableViewController {
             articleCell.articleTime.text = "\(article.time.getDateStringFromUTC())"
             articleCell.articleLabel.text = "\(article.title)"
             articleCell.articleVote.text = "🔥\n\(article.score)"
-            articleCell.commentButton.setTitle("Comments (\(article.kids.count))", for: .normal)
+            articleCell.commentButton.setTitle("💬 \(article.kids.count) Comments", for: .normal)
             articleCell.commentButton.tag = indexPath.row
         }
         return cell
