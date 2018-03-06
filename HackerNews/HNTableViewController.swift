@@ -64,7 +64,7 @@ class HNTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HackerNewsTableViewCell", for: indexPath)
         let article = articles[indexPath.row]
         if let articleCell = cell as? HackerNewsTableViewCell {
-            articleCell.articleTime.text = "\(article.time)"
+            articleCell.articleTime.text = "\(article.time.getDateStringFromUTC())"
             articleCell.articleLabel.text = "\(article.title)"
             articleCell.articleVote.text = "🔥\n\(article.score)"
             articleCell.commentButton.setTitle("Comments (\(article.kids.count))", for: .normal)
