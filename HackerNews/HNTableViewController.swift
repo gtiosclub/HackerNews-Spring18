@@ -42,7 +42,9 @@ class HNTableViewController: UITableViewController {
     func fetchArticleForEntry(_ entryId: String) {
         guard let articleURL = URL(string: "https://hacker-news.firebaseio.com/v0/item/\(entryId).json?print=pretty") else { return }
         URLSession.shared.dataTask(with: articleURL) { (data, response, error) in
-            guard let data = data, let article = try? JSONDecoder().decode(Article.self, from: data) else { return }
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .secondsSince1970
+            guard let data = data, let article = try? decoder.decode(Article.self, from: data) else { return }
             self.articles.append(article)
             DispatchQueue.main.async {
                 self.tableView?.reloadData()
@@ -65,9 +67,14 @@ class HNTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HackerNewsTableViewCell", for: indexPath)
         let article = articles[indexPath.row]
         if let articleCell = cell as? HackerNewsTableViewCell {
-            articleCell.articleTime.text = "\(article.time.getDateStringFromUTC())"
             articleCell.articleLabel.text = "\(article.title)"
             articleCell.articleVote.text = "🔥\n\(article.score)"
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .medium
+            let dateString = dateFormatter.string(from: article.time)
+            articleCell.articleTime.text = "\(dateString)"
+
             articleCell.commentButton.setTitle("💬 \(article.kids.count) Comments", for: .normal)
             articleCell.commentButton.tag = indexPath.row
         }
